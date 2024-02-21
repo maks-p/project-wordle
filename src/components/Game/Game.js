@@ -1,5 +1,6 @@
 import React from "react";
 
+import Guesses from "../Guesses";
 import GuessInput from "../GuessInput";
 
 import { sample } from "../../utils";
@@ -11,7 +12,18 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  return <GuessInput />;
+  const [guesses, setGuesses] = React.useState([]);
+
+  const addGuess = (guess) => {
+    setGuesses([...guesses, guess]);
+  };
+
+  return (
+    <>
+      <Guesses guesses={guesses} />
+      <GuessInput addGuess={addGuess} />
+    </>
+  );
 }
 
 export default Game;
