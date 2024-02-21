@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessInput({ addGuess }) {
+function GuessInput({ addGuess, status }) {
   const [guess, setGuess] = React.useState("");
 
   const handleSubmit = (event) => {
@@ -16,6 +16,7 @@ function GuessInput({ addGuess }) {
         id="guess-input"
         type="text"
         required
+        disabled={status !== "active"}
         pattern="[a-zA-Z]{5}"
         title="Please enter a 5-letter word"
         value={guess}
